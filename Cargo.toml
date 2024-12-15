@@ -1,0 +1,18 @@
+[package]
+name = "telemetry_types"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+postcard = "1.0.10"
+serde = { version = "1.0.214", default-features = false }
+tokio-util = { version = "0.7.12", default-features = false, features = [
+    "codec",
+], optional = true }
+
+[dev-dependencies]
+rstest = "0.23.0"
+
+[features]
+std = ["tokio-util"]
+default = ["std"]
