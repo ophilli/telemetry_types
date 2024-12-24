@@ -44,8 +44,10 @@ mod tests {
     use rstest::rstest;
 
     #[rstest]
-    #[case(2, None)]
-    #[case(4, Some(Telemetry::default()))]
+    #[case::deserialize_nothing(0, None)]
+    #[case::deserialize_default(1, Some(Telemetry::default()))]
+    #[case::deserialize_default_with_remainder(2, Some(Telemetry::default()))]
+    #[case::deserialize_default_with_remainder(4, Some(Telemetry::default()))]
     fn test_simple(#[case] index: usize, #[case] expect: Option<Telemetry>) {
         let mut buffer = [0; 10];
         // Serialize to buffer
